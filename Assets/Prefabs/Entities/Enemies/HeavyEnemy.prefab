@@ -379,8 +379,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1130853571538141387}
   - {fileID: 7853996678525006983}
@@ -405,7 +405,7 @@ MonoBehaviour:
   DamageResistance: 1
   MaxHealth: 10
   Health: 0
-  Speed: 1
+  Speed: 2
   ID: 0
   _healthBar: {fileID: 8134936369565655196}
 --- !u!95 &7316428737215985480

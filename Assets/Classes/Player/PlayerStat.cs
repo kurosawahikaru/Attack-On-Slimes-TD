@@ -71,6 +71,11 @@ public class PlayerStat : MonoBehaviour
         return CurrentGoal;
     }
 
+    public int GetMaxGoal()
+    {
+        return MaxGoal;
+    }
+
     public bool WinCondition()
     {
 
@@ -80,6 +85,8 @@ public class PlayerStat : MonoBehaviour
         }
         return false;
     }
+
+
 
     public void WinGame()
     {

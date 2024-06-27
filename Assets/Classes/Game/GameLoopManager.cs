@@ -170,7 +170,7 @@ public class GameLoopManager : MonoBehaviour
                         if (!EnemiesToRemove.Contains(CurrentDamageData.TargetedEnemy))
                         {
                             EnqueueEnemyToRemove(CurrentDamageData.TargetedEnemy);
-                            PlayerStatistics.AddMoney((int)CurrentDamageData.TargetedEnemy.MaxHealth);
+                            PlayerStatistics.AddMoney((int)CurrentDamageData.TargetedEnemy.MaxHealth*4);
                             PlayerStatistics.AddGoal(1);
                             if (PlayerStatistics.WinCondition()) PlayerStatistics.WinGame();
                         }

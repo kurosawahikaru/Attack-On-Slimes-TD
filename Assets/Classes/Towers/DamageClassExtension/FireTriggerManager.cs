@@ -9,8 +9,8 @@ public class FireTriggerManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Effect FlameEffect = new Effect("Fire", BaseClass.Firerate, BaseClass.Damage, 5f);
-            ApplyEffectData EffectData = new ApplyEffectData(EntitySummoner.EnemyTransformPairs[other.transform.parent], FlameEffect);
+            Effect FlameEffect = new("Fire", BaseClass.Firerate, (BaseClass.Damage)/2, 3f);
+            ApplyEffectData EffectData = new(EntitySummoner.EnemyTransformPairs[other.transform.parent], FlameEffect);
             GameLoopManager.EnqueueEffectToApply(EffectData);
         }
     }

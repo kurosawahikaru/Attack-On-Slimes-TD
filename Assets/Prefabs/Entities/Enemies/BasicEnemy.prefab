@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6342836625769104557}
   m_Layer: 6
   m_Name: Slime_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   NodeIndex: 0
   RootPart: {fileID: 2037763549196528308}
   DamageResistance: 1
-  MaxHealth: 5
+  MaxHealth: 4
   Health: 0
   Speed: 2
   ID: 0
@@ -700,7 +700,7 @@ Transform:
   m_GameObject: {fileID: 8830341231215114547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.292, z: 0}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

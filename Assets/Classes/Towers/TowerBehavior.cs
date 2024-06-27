@@ -8,6 +8,7 @@ public class TowerBehavior : MonoBehaviour
     public LayerMask EnemiesLayer;
     public Enemy Target;
     public Transform TowerPivot;
+    public GameObject RangeSphere;
 
     public float Damage;
     public float Firerate;
@@ -20,7 +21,9 @@ public class TowerBehavior : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+
     {
+        RangeSphere.transform.localScale = new Vector3(Range * 2, Range * 2, Range * 2);
         CurrentDamageMethodClass = GetComponent<IDamageMethod>();
 
         if(CurrentDamageMethodClass == null)
@@ -42,8 +45,8 @@ public class TowerBehavior : MonoBehaviour
         CurrentDamageMethodClass.DamageTick(Target);
         if (Target != null)
         {
-             
-            TowerPivot.transform.rotation = Quaternion.LookRotation(Target.transform.position-TowerPivot.transform.position);
+            RangeSphere.transform.localScale = new Vector3(Range * 2, Range * 2, Range * 2); 
+            TowerPivot.transform.rotation = Quaternion.LookRotation(Target.RootPart.transform.position-TowerPivot.transform.position);
         }
     }
 
@@ -52,7 +55,7 @@ public class TowerBehavior : MonoBehaviour
         if (Target != null)
         {
             Gizmos.DrawWireSphere(transform.position, Range);
-            Gizmos.DrawLine(TowerPivot.position, Target.transform.position);
+            Gizmos.DrawLine(TowerPivot.position, Target.RootPart.transform.position);
         }
     }
 }

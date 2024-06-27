@@ -24,24 +24,29 @@ public class PlayerStat : MonoBehaviour
     private int CurrentMoney;
     private int CurrentGoal;
 
+    private int CurrentLevel=1;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        
         WinPopupUi.SetActive(false);
         GameOverUi.SetActive(false);
+        
         CurrentMoney = StartingMoney;
-        MoneyDisplayText.SetText($"${CurrentMoney}");
+        MoneyDisplayText.SetText($"{CurrentMoney}");
         CurrentLife = MaxLife;
         CurrentLifeTxt.SetText($"{CurrentLife} / {MaxLife}");
         CurrentGoal = 0;
         CurrentGoalTxt.SetText($"{CurrentGoal} / {MaxGoal}");
+
     }
 
     public void AddMoney(int MoneyToAdd)
     {
         CurrentMoney += MoneyToAdd;
-        MoneyDisplayText.SetText($"${CurrentMoney}");
+        MoneyDisplayText.SetText($"{CurrentMoney}");
     }
 
     public void AddLife(int LifeToAdd)
@@ -58,7 +63,7 @@ public class PlayerStat : MonoBehaviour
 
     public int GetMoney()
     {
-        return CurrentMoney;
+        return CurrentMoney; 
     }
 
     public int GetLife()
@@ -76,6 +81,11 @@ public class PlayerStat : MonoBehaviour
         return MaxGoal;
     }
 
+    public int GetLevel()
+    {
+        return CurrentLevel;
+    }
+
     public bool WinCondition()
     {
 
@@ -88,10 +98,12 @@ public class PlayerStat : MonoBehaviour
 
 
 
+
+
     public void WinGame()
     {
         Time.timeScale = 0;
-        WinTxt.SetText($"Congratulation! You won {SceneManager.GetActiveScene().name}!");
+        WinTxt.SetText($"Congratulation! You won {CurrentLevel}!");
         WinPopupUi.SetActive(true);
     }
 

@@ -24,7 +24,7 @@ public class PlayerStat : MonoBehaviour
     private int CurrentMoney;
     private int CurrentGoal;
 
-    private int CurrentLevel=1;
+    private readonly int CurrentLevel=1;
 
 
     // Start is called before the first frame update

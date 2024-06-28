@@ -724,7 +724,7 @@ GameObject:
   m_TagString: CantPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &369237577
 Transform:
@@ -1273,7 +1273,7 @@ GameObject:
   m_TagString: CanPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &651691687
 Transform:
@@ -2196,7 +2196,7 @@ GameObject:
   m_TagString: CantPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &968335138
 Transform:
@@ -2511,7 +2511,7 @@ GameObject:
   m_TagString: CantPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1155014963
 Transform:
@@ -4545,7 +4545,7 @@ GameObject:
   m_TagString: CantPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2036702264
 Transform:

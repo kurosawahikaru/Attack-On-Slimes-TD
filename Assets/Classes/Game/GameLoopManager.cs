@@ -74,10 +74,10 @@ public class GameLoopManager : MonoBehaviour
             //spawn towers
             //move enemies
 
-            NativeArray<Vector3> NodesToUse = new(NodePositions, Allocator.TempJob);
-            NativeArray<int> NodeIndices = new(EntitySummoner.EnemiesInGame.Count, Allocator.TempJob);
-            NativeArray<float> EnemySpeeds = new(EntitySummoner.EnemiesInGame.Count, Allocator.TempJob);
-            TransformAccessArray EnemyAccess = new(EntitySummoner.EnemiesInGameTransform.ToArray(), 100);
+            NativeArray<Vector3> NodesToUse = new(NodePositions, Allocator.Persistent);
+            NativeArray<int> NodeIndices = new(EntitySummoner.EnemiesInGame.Count, Allocator.Persistent);
+            NativeArray<float> EnemySpeeds = new(EntitySummoner.EnemiesInGame.Count, Allocator.Persistent);
+            TransformAccessArray EnemyAccess = new(EntitySummoner.EnemiesInGameTransform.ToArray(),100000);
 
             for(int i = 0; i < EntitySummoner.EnemiesInGame.Count; i++)
             {

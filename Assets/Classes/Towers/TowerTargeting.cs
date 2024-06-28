@@ -17,13 +17,13 @@ public class TowerTargeting
     {
         Collider[] EnemiesInRange = Physics.OverlapSphere(CurrentTower.transform.position, CurrentTower.Range, CurrentTower.EnemiesLayer);
 
-        NativeArray<EnemyData> EnemiesToCalculate = new(EnemiesInRange.Length,Allocator.TempJob);
+        NativeArray<EnemyData> EnemiesToCalculate = new(EnemiesInRange.Length,Allocator.Persistent);
 
-        NativeArray<Vector3> NodePositions = new(GameLoopManager.NodePositions, Allocator.TempJob);
+        NativeArray<Vector3> NodePositions = new(GameLoopManager.NodePositions, Allocator.Persistent);
 
-        NativeArray<float> NodeDistances= new(GameLoopManager.NodeDistances, Allocator.TempJob);
+        NativeArray<float> NodeDistances= new(GameLoopManager.NodeDistances, Allocator.Persistent);
 
-        NativeArray<int> EnemyToIndex = new(new int[] {-1}, Allocator.TempJob);
+        NativeArray<int> EnemyToIndex = new(new int[] {-1}, Allocator.Persistent);
 
         int EnemyIndexToReturn = -1;
 
@@ -98,16 +98,16 @@ public class TowerTargeting
             Health = hp;
         }
         public Vector3 EnemyPosition;
-        public int EnemyIndex;
         public int NodeIndex;
+        public int EnemyIndex;
         public float Health;
     }
 
     struct SearchForEnemy : IJobFor
     {
-        [NativeDisableParallelForRestriction] public NativeArray<EnemyData> _EnemiesToCalculate;
-        [NativeDisableParallelForRestriction] public NativeArray<Vector3> _NodePositions;
-        [NativeDisableParallelForRestriction] public NativeArray<float> _NodeDistances;
+        [ReadOnly][NativeDisableParallelForRestriction] public NativeArray<EnemyData> _EnemiesToCalculate;
+        [ReadOnly][NativeDisableParallelForRestriction] public NativeArray<Vector3> _NodePositions;
+        [ReadOnly][NativeDisableParallelForRestriction] public NativeArray<float> _NodeDistances;
         [NativeDisableParallelForRestriction] public NativeArray<int> _EnemyToIndex;
         public Vector3 TowerPosition;
         public float CompareValue;

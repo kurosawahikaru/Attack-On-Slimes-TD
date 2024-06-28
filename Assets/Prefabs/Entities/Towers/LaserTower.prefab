@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemiesLayer:
     serializedVersion: 2
-    m_Bits: 66
+    m_Bits: 64
   Target: {fileID: 0}
   TowerPivot: {fileID: 8114633091477822825}
   RangeSphere: {fileID: 3859102674944073399}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 8822732219411533394}
   - component: {fileID: 3020217437623839981}
   - component: {fileID: 372724085358311933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

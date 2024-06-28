@@ -318,7 +318,7 @@ MonoBehaviour:
   NodeIndex: 0
   RootPart: {fileID: 2037763549196528308}
   DamageResistance: 1
-  MaxHealth: 4
+  MaxHealth: 5
   Health: 0
   Speed: 2
   ID: 0

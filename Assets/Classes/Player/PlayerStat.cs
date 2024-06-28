@@ -103,7 +103,7 @@ public class PlayerStat : MonoBehaviour
     public void WinGame()
     {
         Time.timeScale = 0;
-        WinTxt.SetText($"Congratulation! You won {CurrentLevel}!");
+        WinTxt.SetText($"Congratulation! You won Level {CurrentLevel}!");
         WinPopupUi.SetActive(true);
     }
 

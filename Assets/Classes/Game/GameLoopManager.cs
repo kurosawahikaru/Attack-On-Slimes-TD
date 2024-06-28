@@ -77,7 +77,7 @@ public class GameLoopManager : MonoBehaviour
             NativeArray<Vector3> NodesToUse = new(NodePositions, Allocator.TempJob);
             NativeArray<int> NodeIndices = new(EntitySummoner.EnemiesInGame.Count, Allocator.TempJob);
             NativeArray<float> EnemySpeeds = new(EntitySummoner.EnemiesInGame.Count, Allocator.TempJob);
-            TransformAccessArray EnemyAccess = new(EntitySummoner.EnemiesInGameTransform.ToArray(), 2);
+            TransformAccessArray EnemyAccess = new(EntitySummoner.EnemiesInGameTransform.ToArray(), 100);
 
             for(int i = 0; i < EntitySummoner.EnemiesInGame.Count; i++)
             {
@@ -131,16 +131,16 @@ public class GameLoopManager : MonoBehaviour
                 for (int i = 0; i < EffectsQueue.Count; i++)
                 {
 
-                    ApplyEffectData CurrentDamageData = EffectsQueue.Dequeue();
-                    Effect EffectDuplicate = CurrentDamageData.EnemyToAffect.ActiveEffects.Find(x => x.EffectName == CurrentDamageData.EffectToApply.EffectName);
+                    ApplyEffectData CurrentEffectData = EffectsQueue.Dequeue();
+                    Effect EffectDuplicate = CurrentEffectData.EnemyToAffect.ActiveEffects.Find(x => x.EffectName == CurrentEffectData.EffectToApply.EffectName);
 
                     if (EffectDuplicate == null)
                     {
-                        CurrentDamageData.EnemyToAffect.ActiveEffects.Add(CurrentDamageData.EffectToApply);
+                        CurrentEffectData.EnemyToAffect.ActiveEffects.Add(CurrentEffectData.EffectToApply);
                     }
                     else
                     {
-                        EffectDuplicate.ExpireTime = CurrentDamageData.EffectToApply.ExpireTime;
+                        EffectDuplicate.ExpireTime = CurrentEffectData.EffectToApply.ExpireTime;
                     }
 
                 }
@@ -170,7 +170,7 @@ public class GameLoopManager : MonoBehaviour
                         if (!EnemiesToRemove.Contains(CurrentDamageData.TargetedEnemy))
                         {
                             EnqueueEnemyToRemove(CurrentDamageData.TargetedEnemy);
-                            PlayerStatistics.AddMoney((int)CurrentDamageData.TargetedEnemy.MaxHealth*4);
+                            PlayerStatistics.AddMoney((int)CurrentDamageData.TargetedEnemy.MaxHealth*3);
                             PlayerStatistics.AddGoal(1);
                             if (PlayerStatistics.WinCondition()) PlayerStatistics.WinGame();
                         }

@@ -16,17 +16,14 @@ public class EnemySpawner : MonoBehaviour
         PlayerStatistics = FindObjectOfType<PlayerStat>();
         _currentLevel = PlayerStatistics.GetLevel();
         Debug.Log(_currentLevel);
-        StartCoroutine(LevelDesign(true, _currentLevel, 5f));
+        StartCoroutine(LevelDesign(true, _currentLevel, 3.5f));
 
     }
 
     IEnumerator LevelDesign(bool status, int level, float waitTime)
     {
         int count = 0;
-        int basicCount = 0;
-        int quickCount = 0;
-        int heavyCount = 0;
-        int wave1, wave2, wave3, wave4 = 0;
+        int wave1, wave2, wave3, wave4, wave5;
         yield return new WaitForSeconds(waitTime);
         while (status == true)
         {
@@ -36,74 +33,109 @@ public class EnemySpawner : MonoBehaviour
                 wave2 = 5;
                 wave3 = 9;
                 wave4 = 14;
+                wave5 = 20;
 
                 for (int i = 0; i < wave1; i++)
                 {
                     GameLoopManager.EnqueueEnemyIDToSummon(1);
                     count++;
-                    basicCount++;
+             
                     yield return new WaitForSeconds(1);
                 }
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(2);
 
                 for (int i = 0; i < wave2 ; i++)
                 {
                     GameLoopManager.EnqueueEnemyIDToSummon(1);
                     count++;
-                    basicCount++;
+                    
                     yield return new WaitForSeconds(1);
                 }
-                yield return new WaitForSeconds(3);
-                basicCount = 0;
+                yield return new WaitForSeconds(2);
+               
 
                 for (int i = 0; i < wave3 ; i++)
                 {
-                    if ((basicCount == 3 && heavyCount==0) || (basicCount == 7 && heavyCount==1))
+                    if (i==2 || i==8)
                     {
                         GameLoopManager.EnqueueEnemyIDToSummon(2);
                         count++;
-                        heavyCount++;
+                        
                         yield return new WaitForSeconds(1);
                     }
                     else
                     {
                         GameLoopManager.EnqueueEnemyIDToSummon(1);
                         count++;
-                        basicCount++;
+                        
                         yield return new WaitForSeconds(1);
                     }
                 }
-                yield return new WaitForSeconds(3);
-                basicCount = 0;
-                heavyCount = 0;
+                yield return new WaitForSeconds(2);
+             
 
                 for (int i = 0; i < wave4; i++)
                 {
-                    if ((basicCount == 0 && heavyCount == 0) || (basicCount == 4 && heavyCount == 1) || (basicCount == 8 && heavyCount == 2) || (basicCount == 10 && heavyCount == 3))
+                    if (i==0||i==5||i==10|i==12)
                     {
                         GameLoopManager.EnqueueEnemyIDToSummon(2);
                         count++;
-                        heavyCount++;
+                        
+                        yield return new WaitForSeconds(1);
+                    }
+                    else if (i==9||i==13)
+                    {
+                        GameLoopManager.EnqueueEnemyIDToSummon(3);
+                        count++;
+                        
                         yield return new WaitForSeconds(1);
                     }
                     else
                     {
                         GameLoopManager.EnqueueEnemyIDToSummon(1);
                         count++;
-                        basicCount++;
+                       
                         yield return new WaitForSeconds(1);
                     }
-                    
-                    
+
+
                 }
-                yield return new WaitForSeconds(3);
-                basicCount = 0;
-                heavyCount = 0;
-                if (count >= PlayerStatistics.GetMaxGoal())
+                yield return new WaitForSeconds(2);
+             
+
+                for (int i = 0; i < wave5; i++)
                 {
-                    status = false;
-                    //PlayerStatistics.WinGame();
+                    if (i<6|| i>16 )
+                    {
+                        GameLoopManager.EnqueueEnemyIDToSummon(3);
+                        count++;
+                        
+                        yield return new WaitForSeconds(1);
+                    }
+                    else if (i%2!=0)
+                    {
+                        GameLoopManager.EnqueueEnemyIDToSummon(2);
+                        count++;
+                       
+                        yield return new WaitForSeconds(1);
+                    }
+                    else
+                    {
+                        GameLoopManager.EnqueueEnemyIDToSummon(1);
+                        count++;
+
+                        yield return new WaitForSeconds(1);
+                    }
+
+
                 }
+                yield return new WaitForSeconds(2);
+          
+                //if (count >= PlayerStatistics.GetMaxGoal())
+                //{
+                //    status = false;
+                //    //PlayerStatistics.WinGame();
+                //}
             }
             else if (level == 2)
             {
@@ -115,7 +147,14 @@ public class EnemySpawner : MonoBehaviour
             }
 
 
-            if (count >= PlayerStatistics.GetMaxGoal()) status = false;
+            if (count >= PlayerStatistics.GetMaxGoal())
+            {
+                GameLoopManager.EnqueueEnemyIDToSummon(1);
+                count++;
+
+                yield return new WaitForSeconds(1);
+            }
+            if (count >= 60) status = false;
         }
         yield return null;
     }

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemiesLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 66
   Target: {fileID: 0}
   TowerPivot: {fileID: 8114633091477822825}
   RangeSphere: {fileID: 3859102674944073399}

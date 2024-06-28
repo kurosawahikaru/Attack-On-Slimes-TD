@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
         Health = MaxHealth;
         transform.position = GameLoopManager.NodePositions[0];
         NodeIndex = 0;
+        _healthBar.UpdateHealthBar(MaxHealth,Health);
     }
 
     public void Tick()
